@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "pilot": {
+    "path": "client/GameClient.bin",
+    "size_bytes": 14759424,
+    "sha256": "C528BF43070E2789170F41B6E3E28CCEC6B57BDC594EE73DFA061188A5D1E4BD",
+    "mode": "read-only-static-analysis",
+    "source": "local immutable copy; upload requires explicit action-time confirmation"
+  }
+}
