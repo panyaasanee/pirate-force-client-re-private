@@ -190,4 +190,3 @@ jobs:
               content: Buffer.from(data.letter_content, 'utf8').toString('base64'),
             });
             core.notice(`Published ${path}`);
-
