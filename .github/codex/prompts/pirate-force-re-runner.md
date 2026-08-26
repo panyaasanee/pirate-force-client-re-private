@@ -9,6 +9,7 @@ You are the hourly Pirate Force static reverse-engineering runner. Process at mo
 - Server repository: `sources/pirate-force-server`.
 - Exact legacy name/id registry: `registry/VITAL_REGISTRY_FROM_CLIENT_BINARY_20260817.tsv`.
 - Lossless union registry generated before this run: `work/PF_PROTOCOL_REGISTRY_COMPAT.tsv`.
+- Optional audited raw-scene bundle: `inputs/PF_RE_CLOUD_SCENES_20260826.zip`, extracted read-only to `work/scene_inputs` when present. It contains the complete `FilmScene`, `Bg1181`, `Bg2033`, and `bg0001` scene folders (60 files; archive SHA-256 `7e9ef01e12e12b1121774f8d5bc02a9a1fd20aef42267ac9d33fa50eb47126ec`).
 
 The cloud image SHA-256 is `c528bf43070e2789170f41b6e3e28ccec6b57bdc594ee73dfa061188a5d1e4bd`. It is byte-identical to the local analysis image in every PE section except one fixed-size `.rdata` server-IP string slot. All executable code and VA layout are identical. Verify the manifest and SHA yourself before relying on this statement.
 
@@ -28,6 +29,8 @@ Select exactly one ticket only when every condition holds:
 - Never rerun a PARTIAL ticket whose result states that the static method ceiling was already measured.
 
 When several tickets qualify, follow an explicit chief priority at the top of the queue. Otherwise select the fastest ticket to finish, preferring grep/table verification over an image-wide census.
+
+Treat an explicitly required artifact as a ticket precondition. If `work/scene_inputs` is absent, do not select `RE-073` or `RE-093` while another eligible ticket can be completed with the checked-out inputs. Do not call the missing file a negative result about game behavior.
 
 If nothing qualifies, do no other work and return `status=NO_WORK`. Do not create a letter or invent a ticket.
 
