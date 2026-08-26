@@ -89,7 +89,19 @@ jobs:
             --output work/PF_PROTOCOL_REGISTRY_COMPAT.tsv \
             --verify-pilot-snapshot \
             > work/protocol_compat_summary.json
+          if [ -f inputs/PF_RE_CLOUD_SCENES_20260826.zip ]; then
+            echo "7e9ef01e12e12b1121774f8d5bc02a9a1fd20aef42267ac9d33fa50eb47126ec  inputs/PF_RE_CLOUD_SCENES_20260826.zip" | sha256sum --check --strict
+            mkdir -p work/scene_inputs
+            python -m zipfile -e inputs/PF_RE_CLOUD_SCENES_20260826.zip work/scene_inputs
+            test "$(find work/scene_inputs -type f | wc -l)" -eq 60
+            test -f work/scene_inputs/FilmScene/filmscene.npc
+            test -f work/scene_inputs/Bg1181/Bg1181.npc
+            test -f work/scene_inputs/Bg2033/Bg2033.npc
+            test -f work/scene_inputs/bg0001/bg0001.npc
+            chmod -R a-w work/scene_inputs
+          fi
           chmod -R a-w client manifest registry tools sources
+          if [ -d inputs ]; then chmod -R a-w inputs; fi
 
       - name: Run one static RE ticket
         id: run_codex
