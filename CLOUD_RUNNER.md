@@ -22,4 +22,3 @@ Never commit either value to a file.
 The scheduled workflow is a no-op while the file is `false` or either secret is absent. GitHub concurrency prevents overlapping runs, and the 50-minute job timeout is stricter than the former 110-minute stale-lock takeover.
 
 The committed legacy registry preserves all 327 data rows from the local source. Its Git blob uses LF line endings (`60d5beb9...e869`); the original Windows CRLF file was `b5880451...ce1f`. The row content and computed wire IDs are identical.
-
