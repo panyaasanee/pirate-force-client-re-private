@@ -11,6 +11,12 @@ Create these Actions secrets in this repository:
 
 Never commit either value to a file.
 
+## Optional raw-scene bundle
+
+`RE-073` and `RE-093` need source scene files that are not in the bridge tables. Upload the prepared `PF_RE_CLOUD_SCENES_20260826.zip` as `inputs/PF_RE_CLOUD_SCENES_20260826.zip` in this repository. The archive contains 60 files from `FilmScene`, `Bg1181`, `Bg2033`, and `bg0001`, is 13,765,502 bytes, and has SHA-256 `7e9ef01e12e12b1121774f8d5bc02a9a1fd20aef42267ac9d33fa50eb47126ec`.
+
+The workflow verifies that exact hash, extracts it under `work/scene_inputs`, verifies the required paths, and makes the extracted tree read-only. Without the archive, the runner skips those two tickets when another eligible ticket is runnable; the rest of the current static queue still has the client image, bridge tables, gamedata, and server source it needs.
+
 ## Safe activation
 
 1. Keep `cloud/runner_enabled` equal to `false`.
