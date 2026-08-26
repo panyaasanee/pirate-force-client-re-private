@@ -74,4 +74,3 @@ For a result:
 - Put the required one-line run summary in `log_line`.
 
 Use Gregorian dates and `+07:00` throughout.
-
