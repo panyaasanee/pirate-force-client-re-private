@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "ticket_id",
+    "result_kind",
+    "jobs",
+    "letter_name",
+    "letter_content",
+    "letter_sha256",
+    "log_line",
+    "queue_sha256",
+    "reopened_after_result",
+    "input_hashes",
+    "summary"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["NO_WORK", "RESULT"]
+    },
+    "ticket_id": {
+      "type": "string"
+    },
+    "result_kind": {
+      "type": "string"
+    },
+    "jobs": {
+      "type": "string"
+    },
+    "letter_name": {
+      "type": "string"
+    },
+    "letter_content": {
+      "type": "string"
+    },
+    "letter_sha256": {
+      "type": "string"
+    },
+    "log_line": {
+      "type": "string"
+    },
+    "queue_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reopened_after_result": {
+      "type": "boolean"
+    },
+    "input_hashes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "before_sha256", "after_sha256", "identical"],
+        "properties": {
+          "path": {"type": "string"},
+          "before_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "after_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "identical": {"type": "boolean"}
+        }
+      }
+    },
+    "summary": {
+      "type": "string"
+    }
+  }
+}
